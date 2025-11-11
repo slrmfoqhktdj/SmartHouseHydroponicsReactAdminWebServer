@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
+
+html,
+body,
+#root,
+.app,
+.content {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
+  
+}
+
+.app {
+  display: flex;
+  position: relative;
+}
+
+.default-dg{
+  width: 100%;
+  height: 100%;
+}
+
+
+.login-div{
+  width: 20%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(1, 9, 31, 0.8);
+  box-shadow: 0 0 35px 1px white;
+  border-radius: 10px;
+  
+}
+
+.loging-bg{
+  width:100%;
+  height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../public/back2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.login-title{
+  margin-top: 20%;
+  /* font-size: 30%; */
+  font-size: 1.3vw;
+  color: white;
+}
+
+.form{
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-id-tv{
+  width: 95%;
+  height: 5vh;
+  border-radius: 40px;
+  border: none;
+  box-shadow: 0 0 0 2px rgb(172, 172, 172,0.3);
+  background-color: rgba(1, 9, 31, 0);
+  
+  font-size: 13px;
+  color: rgba(238, 238, 238, 0.8);
+
+  padding: 0 10px;
+}
+
+
+.login-pw-tv{
+  width: 95%;
+  height: 5vh;
+  border-radius: 40px;
+  border: none;
+  box-shadow: 0 0 0 2px rgb(172, 172, 172,0.3);
+  background-color: rgba(1, 9, 31, 0);
+  
+  margin-top: 15px;
+  font-size: 13px;
+  color: white;
+
+  padding: 0 10px;
+}
+
+/*input text 브라우저 별 힌트 텍스트 칼라*/
+input::placeholder {
+  color:rgba(238, 238, 238, 0.7);
+  font-weight: bold;
+  font-size: 12px;
+}
+input::-webkit-input-placeholder {
+  color:rgba(238, 238, 238, 0.7);
+  font-weight: bold;
+  font-size: 12px;
+}
+input:-ms-input-placeholder {
+  color:rgba(238, 238, 238, 0.7);
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.login-id-tv:focus{
+  outline: none;
+}
+
+.login-pw-tv:focus{
+  outline: none;
+}
+
+.login-btn{
+  width: 100%;
+  height: 3vh;
+  color: rgb(112, 112, 112);
+  border-radius: 15px;
+  border: 0;
+  font-weight: bold;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* .react-datepicker-wrapper {
+  display: none !important;
+} */
+
+.react-datepicker-popper {
+  z-index: 9999 !important;
+}
+
