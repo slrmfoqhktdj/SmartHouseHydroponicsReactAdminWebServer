@@ -1,0 +1,10 @@
+<<<<<<< HEAD
+.env
+node_modules/
+update_zip/
+=======
+.env
+node_modules/
+update_zip/
+>>>>>>> d9c85bf62bb727feba0d3c463ce39bcb2f3ca3c9
+logs/
