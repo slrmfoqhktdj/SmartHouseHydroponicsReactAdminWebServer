@@ -1,0 +1,427 @@
+{
+    "item":[
+        {
+            "id": "801",
+            "code" : "NVCAT",
+            "content":"충전기에 부착된 결제기의 제조회사입니다."
+        },
+        {
+            "id": "802",
+            "code" : "TurbineCrew",
+            "content":"충전기에 부착된 날씨측정프로그램의 제조회사입니다."
+        },
+        {
+            "id": "803",
+            "code" : "IF",
+            "content":"충전기프로그램의 제조회사입니다."
+        },
+
+
+        {
+            "id": "901",
+            "code" : "AllowOfflineTxForUnknownId",
+            "content":"오프라인 일때 알수없는 id가 충전을 할수있는가."
+        },
+        {
+            "id": "902",
+            "code" : "AuthorizationCacheEnabled",
+            "content":"인증캐쉬가 구현되어있는 경우, 인증캐쉬를 사용할건지 아닌지."
+        },
+        {
+            "id": "903",
+            "code" : "AuthorizeRemoteTxRequests",
+            "content":"원격 충전을 위해 승인을 받아야하는지."
+        },
+        {
+            "id": "904",
+            "code" : "ClockAlignedDataInterval",
+            "content":"전송되는 계량(또는 기타) 시계 정렬 주기(초)"
+        },
+
+        {
+            "id": "905",
+            "code" : "ConnectionTimeOut",
+            "content":"시작부터 충전 전까지의 타임아웃."
+        },
+        {
+            "id": "906",
+            "code" : "ConnectorPhaseRotation",
+            "content":""
+        },
+
+        {
+            "id": "907",
+            "code" : "GetConfigurationMaxKeys",
+            "content":"요청된 설정키의 최대수."
+        },
+        {
+            "id": "908",
+            "code" : "HeartbeatInterval",
+            "content":"heartbeat간격."
+        },
+
+        {
+            "id": "909",
+            "code" : "LocalAuthorizeOffline",
+            "content":"오프라인 일 때 충전 포인트가 인증 캐시 및/또는 로컬 인증 목록을 사용하여 사용자에게 인증할지 여부."
+        },
+        {
+            "id": "910",
+            "code" : "LocalPreAuthorize",
+            "content":"청구 지점이 중앙 시스템의 승인 응답을 기다리지 않고 트랜잭션을 시작하기 위해 승인 캐시 및/또는 로컬 승인 목록을 사용할지 여부."
+        },
+
+        {
+            "id": "911",
+            "code" : "MeterValuesAlignedData",
+            "content":"ClockAlignedDataInterval 초 마다 보고에 포함될 시계 정렬 측정량."
+        },
+        {
+            "id": "912",
+            "code" : "MeterValuesSampledData",
+            "content":"MeterValueSampleInterval 초 마다 보고에 포함될 샘플링 측정량."
+        },
+
+        {
+            "id": "913",
+            "code" : "MeterValueSampleInterval",
+            "content":"전송되는 계량(또는 기타) 데이터 샘플링 사이의 시간(초). 서로 다른 시간 간격으로 데이터를 보내는 대신, 일관된 간격으로 데이터를 전송하도록 설정할 때 사용됩니다. 이것은 데이터의 정확성과 타임스탬프 기반의 동기화를 보장합니다"
+        },
+        {
+            "id": "914",
+            "code" : "NumberOfConnectors",
+            "content":"충전포인터의 물리적 충전 커넥터 수."
+        },
+
+        {
+            "id": "915",
+            "code" : "ResetRetries",
+            "content":"실패한 충전 포인트 재설정을 재시도하는 횟수."
+        },
+        {
+            "id": "916",
+            "code" : "StopTransactionOnEVSideDisconnect",
+            "content":"true 로 설정되면 충전 포인트는 케이블이 EV에서 분리될 때 관리상 트랜잭션을 중지합니다."
+        },
+        {
+            "id": "917",
+            "code" : "StopTransactionOnInvalidId",
+            "content":"승인되지 않은 승인 상태를 수신한 경우 청구 지점이 진행 중인 거래를 중지할지 여부."
+        },
+
+        {
+            "id": "918",
+            "code" : "StopTxnAlignedData",
+            "content":"충전 종료 요소에 포함될 시계 정렬 주기 측정 요소."
+        },
+        {
+            "id": "919",
+            "code" : "StopTxnSampledData",
+            "content":"충전 종료 요소에 포함될 샘플링된 측정 요소."
+        },
+        {
+            "id": "920",
+            "code" : "SupportedFeatureProfiles",
+            "content":"지원되는 기능 프로필 목록."
+        },
+        {
+            "id": "921",
+            "code" : "TransactionMessageAttempts",
+            "content":"중앙 시스템이 거래 관련 메시지를 처리하지 못할 때 청구 지점이 거래 관련 메시지 제출을 시도해야 하는 빈도."
+        },
+        {
+            "id": "922",
+            "code" : "TransactionMessageRetryInterval",
+            "content":"중앙 시스템이 실패한 거래 관련 메시지를 다시 제출하기 전에 충전 지점이 기다려야 하는 시간."
+        },
+        {
+            "id": "923",
+            "code" : "UnlockConnectorOnEVSideDisconnect",
+            "content":"true 로 설정된 경우 충전 포인트는 케이블이 EV에서 분리될 때 충전 포인트 측 케이블의 잠금을 해제해야 합니다."
+        },
+        {
+            "id": "924",
+            "code" : "WebSocketPingInterval",
+            "content":"충전기와의 연결중 ping/pong. 실질적인 연결지속 담당. 0은 충전기 측 웹소켓 Ping/Pong을 비활성화합니다."
+        },
+
+
+        {
+            "id": "925",
+            "code" : "Current.Import",
+            "content":"EV에 순간적인 전류 흐름."
+        },
+        {
+            "id": "926",
+            "code" : "Current.Offered",
+            "content":"EV에 제공되는 최대 전류."
+        },
+        {
+            "id": "927",
+            "code" : "Energy.Active.Import.Register",
+            "content":"활성 전기 에너지(Wh 또는 kWh) 레지스터에서 읽은 수치 값 , (그리드 공급으로부터) 수입된 에너지를 측정하는 전기 계량기."
+        },
+        {
+            "id": "928",
+            "code" : "Energy.Active.Import.Interval",
+            "content":"지정된 관련 시간 간격 및 적용 가능한 간격 기간."
+        },
+        {
+            "id": "929",
+            "code" : "Power.Active.Import",
+            "content":"EV에서 가져온 순간 유효 전력."
+        },
+        {
+            "id": "930",
+            "code" : "Power.Offered",
+            "content":"EV에 제공되는 최대 전력."
+        },
+        {
+            "id": "931",
+            "code" : "Temperature",
+            "content":"충전소의 온도 (섭씨)."
+        },
+        {
+            "id": "932",
+            "code" : "SoC",
+            "content":"충전 차량의 충전 상태(%)."
+        },
+
+
+
+
+        {
+            "id": "1001",
+            "code" : "ConnectorLockFailure",
+            "content":"커넥터를 잠그거나 잠금 해제하지 못했습니다."
+        },
+        {
+            "id": "1002",
+            "code" : "EVCommunicationError",
+            "content":"차량과의 통신 실패는 모드 3 또는 기타 통신 프로토콜 문제일 수 있습니다."
+        },
+        {
+            "id": "1003",
+            "code" : "GroundFailure",
+            "content":"지락 회로 차단기가 활성화되었습니다."
+        },
+        {
+            "id": "1004",
+            "code" : "HighTemperature",
+            "content":"충전 포인트 내부 온도가 너무 높습니다."
+        },
+        {
+            "id": "1005",
+            "code" : "InternalError",
+            "content":"내부 하드 또는 소프트웨어 구성 요소에 오류가 있습니다."
+        },
+        {
+            "id": "1006",
+            "code" : "LocalListConflict",
+            "content":"중앙 시스템에서 받은 인증 정보가 LocalAuthorizationList와 충돌합니다."
+        },
+        {
+            "id": "1007",
+            "code" : "NoError",
+            "content":"보고할 오류가 없습니다."
+        },
+        {
+            "id": "1008",
+            "code" : "OtherError",
+            "content":"다른 유형의 오류입니다. 공급업체에러코드에서 자세한 내용을 확인하세요."
+        },
+        {
+            "id": "1009",
+            "code" : "OverCurrentFailure",
+            "content":"과전류 보호 장치가 작동되었습니다."
+        },
+        {
+            "id": "1010",
+            "code" : "OverVoltage",
+            "content":"전압이 허용 가능한 수준 이상으로 상승했습니다."
+        },
+        {
+            "id": "1011",
+            "code" : "PowerMeterFailure",
+            "content":"전기/에너지/전력 측정기를 읽지 못했습니다"
+        },
+        {
+            "id": "1012",
+            "code" : "PowerSwitchFailure",
+            "content":"전원 스위치 제어 실패"
+        },
+        {
+            "id": "1013",
+            "code" : "ReaderFailure",
+            "content":"idTag 리더에 오류가 발생했습니다."
+        },
+        {
+            "id": "1014",
+            "code" : "ResetFailure",
+            "content":"재설정을 수행할 수 없습니다."
+        },
+        {
+            "id": "1015",
+            "code" : "UnderVoltage",
+            "content":"전압이 허용 가능한 수준 아래로 떨어졌습니다."
+        },
+        {
+            "id": "1016",
+            "code" : "WeakSignal ",
+            "content":"무선 통신 장치에서 신호가 약하다고 보고합니다."
+        },
+
+        {
+            "id": "1101",
+            "code" : "Idle",
+            "content":"현재 관련 행위를 하고있지 않습니다."
+        },
+        {
+            "id": "1102",
+            "code" : "Uploaded",
+            "content":"진단 정보가 업로드되었습니다."
+        },
+        {
+            "id": "1103",
+            "code" : "UploadFailed",
+            "content":"진단 정보 업로드에 실패했습니다."
+        },
+        {
+            "id": "1104",
+            "code" : "Uploading",
+            "content":"진단 정보 파일을 업로드 하는 중입니다."
+        },
+        {
+            "id": "1105",
+            "code" : "Downloaded",
+            "content":"충전소에 새로운 펌웨어가 다운로드되었습니다"
+        },
+        {
+            "id": "1106",
+            "code" : "DownloadFailed",
+            "content":"충전소에서 펌웨어를 다운로드하지 못했습니다."
+        },
+        {
+            "id": "1107",
+            "code" : "Downloading",
+            "content":"충전소에서 펌웨어를 다운로드하는 중입니다"
+        },
+        {
+            "id": "1108",
+            "code" : "InstallationFailed ",
+            "content":"충전소에서 새 펌웨어 설치에 실패했습니다."
+        },
+        {
+            "id": "1109",
+            "code" : "Installing",
+            "content":"충전소에서 펌웨어를 설치하는 중입니다."
+        },
+        {
+            "id": "1110",
+            "code" : "Installed",
+            "content":"충전소에서 새 펌웨어가 성공적으로 설치되었습니다."
+        },
+        {
+            "id": "1200",
+            "code" : "DeAuthorized",
+            "content":" 인증 상태로 인해 트랜잭션이 중지되었습니다."
+        },
+        {
+            "id": "1201",
+            "code" : "EmergencyStop",
+            "content":"비상정지 버튼을 사용하였습니다."
+        },
+        {
+            "id": "1202",
+            "code" : "EVDisconnected",
+            "content":"케이블 분리, 차량이 유도 충전 장치에서 멀어졌습니다."
+        },
+        {
+            "id": "1203",
+            "code" : "HardReset",
+            "content":"하드 리셋 명령이 수신되었습니다"
+        },
+        {
+            "id": "1204",
+            "code" : "Local",
+            "content":"충전소에서 사용자의 요청에 따라 로컬로 중지됩니다."
+        },
+        {
+            "id": "1205",
+            "code" : "Other",
+            "content":"다른 이유."
+        },
+        {
+            "id": "1206",
+            "code" : "PowerLoss",
+            "content":"완전한 전력 손실. 이 경우 완료시간은 전력이 끊긴 기준이 아닌 기기가 재 정상가동을 했을때의 시간."
+        },
+        {
+            "id": "1207",
+            "code" : "Reboot",
+            "content":"로컬로 시작된 재설정/재부팅이 발생했습니다."
+        },
+        {
+            "id": "1208",
+            "code" : "Remote",
+            "content":"중앙 시스템의 요청에 따라 원격으로 중지되었습니다."
+        },
+        {
+            "id": "1209",
+            "code" : "SoftReset",
+            "content":"소프트웨어 리셋 명령이 수신되었습니다."
+        },
+        {
+            "id": "1210",
+            "code" : "UnlockCommand",
+            "content":"중앙 시스템이 커넥터 잠금 해제 명령을 보냈습니다."
+        },
+        {
+            "id": "1300",
+            "code" : "Available",
+            "content":"신규 사용자가 커넥터를 사용할 수 있게 되는 경우."
+        },
+        {
+            "id": "1301",
+            "code" : "Preparing",
+            "content":"신규 사용자가 커넥터를 더 이상 사용할 수 없게 되었지만 아직 진행 중인 거래가 없는 경우.케이블을 삽입하거나 차량이 주차 공간을 점유하는 경우 준비 상태입니다."
+        },
+        {
+            "id": "1302",
+            "code" : "Charging",
+            "content":"커넥터가 연결되고 차량이 충전됩니다."
+        },
+        {
+            "id": "1303",
+            "code" : "SuspendedEVSE",
+            "content":"EV가 EVSE에 연결되어 있지만 스마트 충전 제한 등으로 인해 EVSE가 EV에 에너지를 제공하지 않는 경우."
+        },
+        {
+            "id": "1304",
+            "code" : "SuspendedEV",
+            "content":"EV가 EVSE에 연결되어 있고 EVSE가 에너지를 제공하지만 EV가 에너지를 전혀 사용하지 않는 경우."
+        },
+        {
+            "id": "1305",
+            "code" : "Finishing",
+            "content":"트랜잭션이 커넥터에서 중지되었지만 신규 사용자가 커넥터를 아직 사용할 수 없는 경우."
+        },
+        {
+            "id": "1306",
+            "code" : "Reserved",
+            "content":"지금 예약 명령 의 결과로 커넥터가 예약된 경우."
+        },
+        {
+            "id": "1307",
+            "code" : "Unavailable",
+            "content":"가용성 변경 명령이나 재량에 따라 충전 포인트가 사용할 수 없는 상태로 전환되는 이벤트의 결과로 커넥터를 사용할 수 없게 되는 경우."
+        },
+        {
+            "id": "1308",
+            "code" : "Faulted",
+            "content":"충전 지점이나 커넥터에서 오류가 보고되어 에너지 공급을 사용할 수 없는 경우."
+        }
+
+
+    ]
+}
