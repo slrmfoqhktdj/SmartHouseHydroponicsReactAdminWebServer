@@ -6,13 +6,15 @@ const path = require('path');
 
 //환경변수
 require('dotenv').config({ path:path.join(__dirname,'./.env') });
-const port = process.env.PORT || 5025;
+const port = process.env.PORT || 5015;
 
 const mysqlstore = require('express-mysql-session')(session)
 const option = require('./db/dboption')
 
  
  const mysqlsessionstore = new mysqlstore(option.sessionconfig)
+
+  app.set('trust proxy',true) //https 사용시 필요
  
  app.use(session({
     // secure: true, // https 환경에서만 session 정보를 주고받도록 처리
@@ -20,8 +22,10 @@ const option = require('./db/dboption')
     resave: false,                  // true : session변경사항이 없을때에도 계속 저장함
     saveUninitialized: false,       // true : 페이지 방문시마다 새로운 session 추가. 방문수에 따라 등급을 정할때 쓰임
     cookie: {
-       secure: false,
-       maxAge:3600000
+       secure: true,
+       maxAge:3600000,
+       httpOnly:true,
+       sameSite:'lax'       //strict 도 가능 , 보안에는 strict 가 더 좋으나 다른 사이트의 get요청도 허용하려면 lax 사용
     },
     store:mysqlsessionstore
  }))
@@ -38,8 +42,9 @@ app.use(express.static( path.join(__dirname, '/update_zip')))
 
 const cors = require("cors")
 app.use(cors({
-    origin:"http://localhost:5020",
+    // origin:"http://localhost:5020",
     // origin:true,
+    origin:"https://shouse.hydrop.admin.gracetech.co.kr",
     credentials:true
 }))
 
@@ -74,5 +79,5 @@ app.use('',analysis)    // 정산/지표분석
 
 
 app.listen(port, function () {
-    console.log("server listening on port "+port)
+    console.log("admin server listening on port "+port)
 })

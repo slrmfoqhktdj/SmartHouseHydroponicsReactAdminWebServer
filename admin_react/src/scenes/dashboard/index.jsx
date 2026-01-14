@@ -51,6 +51,7 @@ const Dashboard = () => {
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
+          overflow="hidden"
         >
           <Box
             mt="25px"
@@ -82,13 +83,14 @@ const Dashboard = () => {
           gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
+          overflow="hidden"
           // padding="30px"
         >
-          <Box
+          {/* <Box
             gridColumn="span 8"
             gridRow="span 2"
             backgroundColor={colors.primary[400]}
-          >
+          > */}
             <Box
               mt="25px"
               p="0 30px"
@@ -112,7 +114,7 @@ const Dashboard = () => {
             <Box height="200px" m="-20px 0 0 0">
               <DeviceAppointList isDashboard={true} Data={Data?.appoint}/>
             </Box>
-          </Box>
+          {/* </Box> */}
         
         </Box>
 
@@ -121,12 +123,13 @@ const Dashboard = () => {
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           // padding="30px"
+          overflow="hidden"
         >
-          <Box
+          {/* <Box
             gridColumn="span 8"
             gridRow="span 2"
             backgroundColor={colors.primary[400]}
-          >
+          > */}
             <Box
               mt="25px"
               p="0 30px"
@@ -150,7 +153,7 @@ const Dashboard = () => {
             <Box height="200px" m="-20px 0 0 0">
               <DeviceUserList isDashboard={true} Data={Data?.deviceuser}/>
             </Box>
-          </Box>
+          {/* </Box> */}
         
         </Box>
        
@@ -161,6 +164,7 @@ const Dashboard = () => {
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
+          overflow="hidden"
         >
           <Box
             mt="25px"
@@ -193,6 +197,7 @@ const Dashboard = () => {
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
+          overflow="hidden"
         >
           <Box
             mt="25px"

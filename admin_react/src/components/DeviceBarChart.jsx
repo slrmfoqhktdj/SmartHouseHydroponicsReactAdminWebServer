@@ -1,12 +1,12 @@
 import React  from 'react'
-import { Fragment } from 'react'
+// import { Fragment } from 'react'
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-import { Axes } from "@nivo/axes";
-import { line } from "d3-shape";
-import { computeXYScalesForSeries } from "@nivo/scales";
-import { useTooltip, TableTooltip } from "@nivo/tooltip";
+// import { Axes } from "@nivo/axes";
+// import { line } from "d3-shape";
+// import { computeXYScalesForSeries } from "@nivo/scales";
+// import { useTooltip, TableTooltip } from "@nivo/tooltip";
 import { BoxLegendSvg } from "@nivo/legends";
 
 // 라인 색
@@ -80,19 +80,19 @@ const customLegendSpec = {
 
 
   // 오버 시 나타나는 메시지
-function CustomTooltip({ timeValue, tempValue, humiValue , co2Value, phecValue }) {
-  return (
-    <TableTooltip
-      rows={[
-        ["시간", timeValue],
-        ["온도", tempValue],
-        ["습도", humiValue],
-        ["co2센서", co2Value],
-        ["phec센서", phecValue],
-      ]}
-    />
-  );
-}
+// function CustomTooltip({ timeValue, tempValue, humiValue , co2Value, phecValue }) {
+//   return (
+//     <TableTooltip
+//       rows={[
+//         ["시간", timeValue],
+//         ["온도", tempValue],
+//         ["습도", humiValue],
+//         ["co2센서", co2Value],
+//         ["phec센서", phecValue],
+//       ]}
+//     />
+//   );
+// }
 
 
 
@@ -123,156 +123,156 @@ const DeviceBarChart = ({ isDashboard = false , Data}) => {
   // })
 
   // 라인 그리기
-  const Line = ({ bars, xScale, innerWidth, innerHeight, tooltip }) => {
+  // const Line = ({ bars, xScale, innerWidth, innerHeight, tooltip }) => {
 
-    const scale = computeXYScalesForSeries(
-      [
-        {
-          id: "co2_sensor",
-          data: Data&&Data.length? Data.map((it) => ({ x: it.time, y: it.co2_sensor  })) :[]
-        }
-      ],
-      { type: "linear" },
-      { type: "linear" },
-      innerWidth,
-      innerHeight
-    );
+  //   const scale = computeXYScalesForSeries(
+  //     [
+  //       {
+  //         id: "co2_sensor",
+  //         data: Data&&Data.length? Data.map((it) => ({ x: it.time, y: it.co2_sensor  })) :[]
+  //       }
+  //     ],
+  //     { type: "linear" },
+  //     { type: "linear" },
+  //     innerWidth,
+  //     innerHeight
+  //   );
 
-    const scale2 = computeXYScalesForSeries(
-      [
-        {
-          id: "ph_ec_sensor",
-          data: Data&&Data.length?  Data.map((it) => ({ x: it.time, y: it.ph_ec_sensor  })) :[]
-        }
-      ],
-      { type: "linear" },
-      { type: "linear" },
-      innerWidth,
-      innerHeight
-    );
+  //   const scale2 = computeXYScalesForSeries(
+  //     [
+  //       {
+  //         id: "ph_ec_sensor",
+  //         data: Data&&Data.length?  Data.map((it) => ({ x: it.time, y: it.ph_ec_sensor  })) :[]
+  //       }
+  //     ],
+  //     { type: "linear" },
+  //     { type: "linear" },
+  //     innerWidth,
+  //     innerHeight
+  //   );
   
     
-    // 선그리기
-    const lineGenerator = line()
-      // .x((bar) =>  bar.x + bar.width / 2 )
-      .x((bar) => {
-         return bar.x+ bar.width / 2 
-        })
-      .y((bar) => {    
-        if(bar.data.data.co2_sensor === "0" ) return scale.yScale(0)
-        return typeof bar.data.data.co2_sensor == "undefined"?scale.yScale(0):scale.yScale(bar.data.data.co2_sensor)
-    });
-    const lineGenerator2 = line()
-      .x((bar) => { 
-         return  bar.x+ bar.width / 2 
-        })
-      .y((bar) => { 
-        if(bar.data.data.ph_ec_sensor === "0" ) return scale.yScale(0)
-        return typeof bar.data.data.ph_ec_sensor == "undefined" ?scale2.yScale(0):scale2.yScale(bar.data.data.ph_ec_sensor)
-    });
+  //   // 선그리기
+  //   const lineGenerator = line()
+  //     // .x((bar) =>  bar.x + bar.width / 2 )
+  //     .x((bar) => {
+  //        return bar.x+ bar.width / 2 
+  //       })
+  //     .y((bar) => {    
+  //       if(bar.data.data.co2_sensor === "0" ) return scale.yScale(0)
+  //       return typeof bar.data.data.co2_sensor == "undefined"?scale.yScale(0):scale.yScale(bar.data.data.co2_sensor)
+  //   });
+  //   const lineGenerator2 = line()
+  //     .x((bar) => { 
+  //        return  bar.x+ bar.width / 2 
+  //       })
+  //     .y((bar) => { 
+  //       if(bar.data.data.ph_ec_sensor === "0" ) return scale.yScale(0)
+  //       return typeof bar.data.data.ph_ec_sensor == "undefined" ?scale2.yScale(0):scale2.yScale(bar.data.data.ph_ec_sensor)
+  //   });
 
     
   
-    const tip = useTooltip();
+  //   const tip = useTooltip();
   
-    function renderTip(e, idx) {
+  //   function renderTip(e, idx) {
 
-      return tip.showTooltipFromEvent(
-        <CustomTooltip timeValue={Data&&Data.length?  Data[idx].time : null} tempValue={Data&&Data.length?   Data[idx].temp : null} humiValue={Data&&Data.length?  Data[idx].humi : null} co2Value={Data&&Data.length?  Data[idx].co2_sensor: null} phecValue={Data&&Data.length?  Data[idx].ph_ec_sensor: null}/>,
-        e
-      );
-    }
+  //     return tip.showTooltipFromEvent(
+  //       <CustomTooltip timeValue={Data&&Data.length?  Data[idx].time : null} tempValue={Data&&Data.length?   Data[idx].temp : null} humiValue={Data&&Data.length?  Data[idx].humi : null} co2Value={Data&&Data.length?  Data[idx].co2_sensor: null} phecValue={Data&&Data.length?  Data[idx].ph_ec_sensor: null}/>,
+  //       e
+  //     );
+  //   }
     
-    return (
-      <Fragment>
-        {/* y좌표  */}
+  //   return (
+  //     <Fragment>
+  //       {/* y좌표  */}
         
-        <Axes
-          yScale={scale.yScale}
-          xScale={xScale}
-          width={innerWidth}
-          height={innerHeight}
-          right={{
-            ticksPosition: "after",
-            legend:"co2센서",
-            legendPosition:"middle",
-            legendOffset: 30,
+  //       <Axes
+  //         yScale={scale.yScale}
+  //         xScale={xScale}
+  //         width={innerWidth}
+  //         height={innerHeight}
+  //         right={{
+  //           ticksPosition: "after",
+  //           legend:"co2센서",
+  //           legendPosition:"middle",
+  //           legendOffset: 30,
             
-          }}
-        />
-        <Axes
-          yScale={scale2.yScale}
-          xScale={xScale}
-          width={innerWidth + 50}
-          height={innerHeight}
-          right={{
-            ticksPosition: "after",
-            legend:"phec센서",
-            legendPosition:"middle",
-            legendOffset: 30,
-          }}
-        />
-        {/* 선삽입 */}
-        <path
-          d={lineGenerator(bars)}
-          fill="none"
-          stroke={lineColor}
-          style={{ pointerEvents: "none" ,strokeWidth:"3"}}
-        />
-        <path
-          d={lineGenerator2(bars)}
-          fill="none"
-          stroke={lineColor2 }
-          style={{ pointerEvents: "none" ,strokeWidth:"3"}}
-        />
+  //         }}
+  //       />
+  //       <Axes
+  //         yScale={scale2.yScale}
+  //         xScale={xScale}
+  //         width={innerWidth + 50}
+  //         height={innerHeight}
+  //         right={{
+  //           ticksPosition: "after",
+  //           legend:"phec센서",
+  //           legendPosition:"middle",
+  //           legendOffset: 30,
+  //         }}
+  //       />
+  //       {/* 선삽입 */}
+  //       <path
+  //         d={lineGenerator(bars)}
+  //         fill="none"
+  //         stroke={lineColor}
+  //         style={{ pointerEvents: "none" ,strokeWidth:"3"}}
+  //       />
+  //       <path
+  //         d={lineGenerator2(bars)}
+  //         fill="none"
+  //         stroke={lineColor2 }
+  //         style={{ pointerEvents: "none" ,strokeWidth:"3"}}
+  //       />
 
-        {/* 선 꼭짓점 */}
-        {bars.map((bar) => (
-          <circle
-            key={bar.key}
-            cx={bar.x + bar.width / 2}
-            cy={(typeof bar.data.data.count == "undefined")|| bar.data.data.count === "0" ? scale.yScale(0)  : scale.yScale(bar.data.data.count)}
-            r={3}
-            fill={lineColor}
-            stroke={lineColor}
-            style={{ pointerEvents: "none" }}
-          />
+  //       {/* 선 꼭짓점 */}
+  //       {bars.map((bar) => (
+  //         <circle
+  //           key={bar.key}
+  //           cx={bar.x + bar.width / 2}
+  //           cy={(typeof bar.data.data.count == "undefined")|| bar.data.data.count === "0" ? scale.yScale(0)  : scale.yScale(bar.data.data.count)}
+  //           r={3}
+  //           fill={lineColor}
+  //           stroke={lineColor}
+  //           style={{ pointerEvents: "none" }}
+  //         />
           
-        ))}
-        {bars.map((bar) => (
-          <circle
-            key={bar.key}
-            cx={bar.x + bar.width / 2}
-            cy={(typeof bar.data.data.pay == "undefined") || bar.data.data.pay === "0" ?  scale.yScale(0)  : scale2.yScale(bar.data.data.pay)}
-            r={3}
-            fill={lineColor2}
-            stroke={lineColor2}
-            style={{ pointerEvents: "none" }}
-          />
+  //       ))}
+  //       {bars.map((bar) => (
+  //         <circle
+  //           key={bar.key}
+  //           cx={bar.x + bar.width / 2}
+  //           cy={(typeof bar.data.data.pay == "undefined") || bar.data.data.pay === "0" ?  scale.yScale(0)  : scale2.yScale(bar.data.data.pay)}
+  //           r={3}
+  //           fill={lineColor2}
+  //           stroke={lineColor2}
+  //           style={{ pointerEvents: "none" }}
+  //         />
 
           
-        ))}
+  //       ))}
 
        
         
-        {bars.map((bar, idx) => (
-          <rect
-            key={bar.key}
-            x={bar.x}
-            y={0}
-            height={innerHeight}
-            width={bar.width}
-            fill="transparent"
-            onMouseEnter={(e) => renderTip(e, idx)}
-            onMouseMove={(e) => renderTip(e, idx)}
-            onMouseLeave={tip.hideTooltip}
-          />
-        ))}
+  //       {bars.map((bar, idx) => (
+  //         <rect
+  //           key={bar.key}
+  //           x={bar.x}
+  //           y={0}
+  //           height={innerHeight}
+  //           width={bar.width}
+  //           fill="transparent"
+  //           onMouseEnter={(e) => renderTip(e, idx)}
+  //           onMouseMove={(e) => renderTip(e, idx)}
+  //           onMouseLeave={tip.hideTooltip}
+  //         />
+  //       ))}
 
 
-      </Fragment>
-    );
-  };
+  //     </Fragment>
+  //   );
+  // };
 
 
 

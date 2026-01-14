@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "client": "cd admin_react && npm run start",
-    "server": "nodemon server.js",
+    "server": "node server.js",
     "dev": "concurrently --kill-others-on-fail --max-old-space-size=4096 \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

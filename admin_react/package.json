@@ -45,8 +45,8 @@
     "yup": "^1.4.0"
   },
   "scripts": {
-    "start": "set PORT=5020 && react-scripts start",
-    "build": "react-scripts build",
+    "start": "export PORT=5010 && react-scripts start",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
