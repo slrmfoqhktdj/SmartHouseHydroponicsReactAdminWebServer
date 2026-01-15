@@ -3,6 +3,11 @@
 const jwtMiddleware = require('../middlewares/jwt')
 require('dotenv').config({ path:'../.env'});
 
+const session = require('express-session')
+const mysqlstore = require('express-mysql-session')(session)
+const option = require('../db/dboption') 
+ const mysqlsessionstore = new mysqlstore(option.sessionconfig)
+
 
 
 const getuserlist = async (request, response, next) => {
@@ -261,6 +266,88 @@ const updateuser = async (request, response, next) =>{
     }
 }
 
+const logoutuser = async (request, response, next) =>{
+    console.log('c_logout')
+
+    const email = request.body.email
+    const type = request.body.type
+
+    const sendLogoutResultData = {
+        isLogouted:false,
+        errorMessage :""
+    };
+
+    if(email && type){
+        try{
+
+            if( type == "web" || type == "all"){
+                //웹 세션 지우기
+                const sessions = await new Promise((resolve, reject) => {
+                    mysqlsessionstore.all((err, sessions) => {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve(sessions);
+                        }
+                    });
+                });
+
+                const sessionIds = Object.keys(sessions).filter(sessionId => {
+                    const session = sessions[sessionId];
+                    return session.user.email === email;
+                });
+
+                await Promise.all(sessionIds.map(sessionId => {
+                    return new Promise((resolve, reject) => {
+                        mysqlsessionstore.destroy(sessionId, (err) => {
+                            if (err) {
+                                reject(err);
+                            } else {
+                                resolve();
+                            }
+                        });
+                    });
+                }));  
+            }
+
+
+
+
+            const result = await jwtMiddleware.callGoAPI(request,'POST','/if/user/logouter',{email: email,type: type},null)
+
+            // console.log(result)
+            if(result.item){
+                sendLogoutResultData.isLogouted = true
+                response.send(sendLogoutResultData)
+            }else{
+                sendLogoutResultData.isLogouted = false
+                sendLogoutResultData.errorMessage = "로그아웃에 실패했습니다"
+                response.send(sendLogoutResultData)
+                // response.redirect(response.locals.base)
+            }
+            
+
+        }catch(e){
+            if(e.response?.status==401){
+                request.session.destroy()
+                response.send(401)
+            }else{
+                console.log("err : "+e);
+                sendLogoutResultData.isLogouted = false
+                sendLogoutResultData.errorMessage = "로그아웃에 실패했습니다"
+                response.send(sendLogoutResultData)
+            }
+        }
+        
+    }else{
+        // request.session.errorMessage = "정보를 입력해주세요"
+        sendLogoutResultData.isLogouted = false
+        sendLogoutResultData.errorMessage = "정보를 입력해주세요"
+        response.send(sendLogoutResultData)
+        // response.redirect(response.locals.base)
+    }
+}
+
 const alarmuser = async (request, response, next) =>{
     console.log('c_update')
 
@@ -395,6 +482,7 @@ module.exports = {
     insertuser,
     removeuser,
     updateuser,
+    logoutuser,
     alarmuser,
     alarmwhole,
 }

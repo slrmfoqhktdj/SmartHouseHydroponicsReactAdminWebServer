@@ -11,6 +11,7 @@ router.post('/user/register',authMiddleware.isAuthenticated,user.insertuser)    
 router.post('/user/remove',authMiddleware.isAuthenticated,user.removeuser)    // 유저 삭제
 router.post('/user/update',authMiddleware.isAuthenticated,user.updateuser)    // 유저 수정
 router.post('/user/alert',authMiddleware.isAuthenticated,user.alarmuser)    // 유저 알람
+router.post('/user/logout',authMiddleware.isAuthenticated,user.logoutuser)    // 유저 삭제
 router.post('/user/whole/alert',authMiddleware.isAuthenticated,user.alarmwhole)    // 유저 전체 알람
 
 module.exports = router

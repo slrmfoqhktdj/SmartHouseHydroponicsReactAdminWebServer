@@ -10,7 +10,12 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import  TextField  from '@mui/material/TextField'
+import TextField  from '@mui/material/TextField'
+
+import RadioGroup from '@mui/material/RadioGroup';
+import Radio from '@mui/material/Radio';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -25,8 +30,9 @@ const UserList = ({ isDashboard = false , Data, setMounted , TablePaginationFunc
   const colors = tokens(theme.palette.mode);
 
   const [UpdateDialog,setUpdateDialog] = useState(false);
-  const [RemoveDialog,setRemoveDialog] = useState(false);
+  const [LogoutDialog,setLogoutDialog] = useState(false);
   const [AlertDialog,setAlertDialog] = useState(false);
+  const [RemoveDialog,setRemoveDialog] = useState(false);
 
   const [SelectedItemId,setSelectedItemId] = useState({email:"",name:""});
 
@@ -48,6 +54,15 @@ const UserList = ({ isDashboard = false , Data, setMounted , TablePaginationFunc
 
   function closeRemoveDialog(){
     setRemoveDialog(false)
+    // setSelectedItemId(null)
+  }
+
+  function openLogoutDialog(){
+    setLogoutDialog(true)
+  }
+
+  function closeLogoutDialog(){
+    setLogoutDialog(false)
     // setSelectedItemId(null)
   }
 
@@ -177,6 +192,33 @@ const UserList = ({ isDashboard = false , Data, setMounted , TablePaginationFunc
     },
   }
 
+  const logoutProps = {
+    component: 'form',
+    onSubmit: (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(event.currentTarget);
+      formData.append('email',SelectedItemId.email)
+
+      const formJson = Object.fromEntries(formData.entries());
+
+      fetchPost("/user/logout",formJson)
+      .then((json) => {           
+        if(json?.isLogouted===true){
+          
+          closeLogoutDialog();
+
+          setMounted()
+        }
+        else {
+          alert(json?.errorMessage)
+        }
+      }).catch((err)=>{});
+
+
+    },
+  }
+
   const alertProps = {
     component: 'form',
     onSubmit: (e) => {
@@ -268,6 +310,7 @@ const UserList = ({ isDashboard = false , Data, setMounted , TablePaginationFunc
       >
         <MenuItem onClick={()=>{closePositionMenu(); openUpdateDialog()}}>수정</MenuItem>
         <MenuItem onClick={()=>{closePositionMenu(); openRemoveDialog()}}>삭제</MenuItem>
+        <MenuItem onClick={()=>{closePositionMenu(); openLogoutDialog()}}>로그아웃</MenuItem>
         <MenuItem onClick={()=>{closePositionMenu(); openAlertDialog()}}>알림</MenuItem>
       </Menu>
 
@@ -289,6 +332,33 @@ const UserList = ({ isDashboard = false , Data, setMounted , TablePaginationFunc
         <DialogActions>
           <Button onClick={closeRemoveDialog} color="secondary">취소</Button>
           <Button type="submit" color="secondary">삭제하기</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={LogoutDialog}
+        onClose={closeLogoutDialog}
+        PaperProps={logoutProps}
+      >
+        <DialogTitle>사용자 로그아웃</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            사용자 {SelectedItemId.email}을 로그아웃시킵니다
+          </DialogContentText>
+          
+          <p></p>
+          <FormLabel id="demo-controlled-radio-buttons-group">로그인 타입</FormLabel>
+          <RadioGroup row aaria-labelledby="demo-row-radio-buttons-group-label"  name="type" defaultValue={"all"} required>
+            <FormControlLabel value= "web" control={<Radio />} label="웹" />
+            <FormControlLabel value= "app" control={<Radio />} label="앱" />
+            <FormControlLabel value= "all" control={<Radio />} label="전체" />
+          </RadioGroup>
+          <p></p>
+
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={closeLogoutDialog} color="secondary">취소</Button>
+          <Button type="submit" color="secondary">로그아웃하기</Button>
         </DialogActions>
       </Dialog>
 
